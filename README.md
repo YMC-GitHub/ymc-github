@@ -22,3 +22,6 @@ i :heart:  :whale:
 alt="ymc-github's Wakatime Stats"/></a>
 
 [![ymc-github's GitHub Activity Graph](https://activity-graph.herokuapp.com/graph?username=ymc-github&theme=xcode)](https://git.io/ymc-github)
+
+<a href="https://wakatime.com/@yemiancheng"><img align="center" width="98%" src="https://github-readme-stats.vercel.app/api/wakatime?username=yemiancheng&layout=compact&theme=radical&custom_title=yemiancheng's Wakatime Stats" 
+alt="yemiancheng's Wakatime Stats"/></a>
