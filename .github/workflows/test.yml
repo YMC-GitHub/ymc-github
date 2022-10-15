@@ -25,7 +25,9 @@ jobs:
         node_version: [12.x, 14.x, 16.x]
         # set os matrix
         os: [ubuntu-latest, windows-latest, macos-latest]
-        architecture: [x86, x64]
+        # architecture: [x86, x64]
+        architecture: 
+         - x64
       fail-fast: false
 
     name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
