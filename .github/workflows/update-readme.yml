@@ -10,7 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      
+      - name: install pnpm
+        uses: pnpm/action-setup@v2 #https://github.com/pnpm/action-setup
+        with:
+          version: 6.34.0
 
       - name: Set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v3
