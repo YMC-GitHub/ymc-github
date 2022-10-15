@@ -40,6 +40,10 @@ jobs:
         with:
           version: 6.34.0
 
+      - name: set pnpm store directory
+        run: pnpm config set store-dir ~/.pnpm-store
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+
       - name: set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
