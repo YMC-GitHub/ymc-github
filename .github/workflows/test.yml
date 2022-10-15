@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
-        run: pnpm install --frozen-lockfile
+        # run: pnpm install --frozen-lockfile
       - name: run test
         run: pnpm test
     #   - uses: ymc-gitub/ymc-gitub@master
