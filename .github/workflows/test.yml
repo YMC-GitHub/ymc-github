@@ -22,11 +22,13 @@ jobs:
     strategy:
       matrix:
         # set nodejs matrix
-        node_version: [12.x,14.x, 16.x]
+        node_version: [12.x, 14.x, 16.x]
         # set os matrix
-        os: [ubuntu-latest, windows-latest,macos-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        architecture: [x86, x64]
       fail-fast: false
 
+    name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
     steps:
       - name: sync git repo
         uses: actions/checkout@v3
@@ -40,8 +42,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
+          architecture: ${{ matrix.architecture }}
           cache: pnpm
-        # run: pnpm install --frozen-lockfile
+    #   - name: run ci
+    #     run: pnpm ci
       - name: run test
         run: pnpm test
     #   - uses: ymc-gitub/ymc-gitub@master
