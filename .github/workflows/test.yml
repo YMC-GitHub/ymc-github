@@ -24,7 +24,7 @@ jobs:
         # set nodejs matrix
         node_version: [14.x, 16.x]
         # set os matrix
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest,macos-latest]
       fail-fast: false
 
     steps:
