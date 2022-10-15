@@ -40,6 +40,13 @@ jobs:
         with:
           version: 6.34.0
 
+      - name: set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          architecture: ${{ matrix.architecture }}
+          cache: pnpm
+
     #   - name: set pnpm store directory
     #     run: pnpm config set store-dir ~/.pnpm-store
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
@@ -57,12 +64,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: set node version to ${{ matrix.node_version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node_version }}
-          architecture: ${{ matrix.architecture }}
-          cache: pnpm
+      - name: install dependencies
+        run: pnpm i
     #   - name: run ci
     #     run: pnpm ci
       - name: run test
