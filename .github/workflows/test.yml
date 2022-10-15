@@ -47,22 +47,23 @@ jobs:
           architecture: ${{ matrix.architecture }}
           cache: pnpm
 
-    #   - name: set pnpm store directory
-    #     run: pnpm config set store-dir ~/.pnpm-store
+      - name: set pnpm store directory
+        # run: pnpm config set store-dir ~/.pnpm-store
+        run: pnpm config set store-dir .pnpm-store
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
 
-      - name: get pnpm store directory
-        id: pnpm-cache
-        run: |
-          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+    #   - name: get pnpm store directory
+    #     id: pnpm-cache
+    #     run: |
+    #       echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
 
-      - uses: actions/cache@v3
-        name: set pnpm cache directory
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+    #   - uses: actions/cache@v3
+    #     name: set pnpm cache directory
+    #     with:
+    #       path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+    #       key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+    #       restore-keys: |
+    #         ${{ runner.os }}-pnpm-store-
 
       - name: install dependencies
         run: pnpm i
