@@ -5,8 +5,5 @@
 <a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="56%" src="https://github-readme-stats.vercel.app/api?username=ymc-github&show_icons=true&count_private=true&include_all_commits=true&line_height=21&cache_seconds=1800&theme=radical" alt="ymc-github's github stats" /></a>
 <a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="41%" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ymc-github&layout=compact&langs_count=6&theme=radical" alt="Top Languages"/></a>
 
-<a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="98%" src="https://github-readme-stats.vercel.app/api/wakatime?username=ymc_github&theme=radical&custom_title=YeMiancheng's Wakatime Stats" 
-alt="YeMiancheng's Wakatime Stats"/></a>
-
 <a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="98%" src="https://activity-graph.herokuapp.com/graph?username=ymc-github&theme=redical" 
 alt="ymc-github's GitHub Activity Graph"/></a>
