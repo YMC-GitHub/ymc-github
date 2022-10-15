@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         # set nodejs matrix
-        node_version: [14.x, 16.x]
+        node_version: [12.x,14.x, 16.x]
         # set os matrix
         os: [ubuntu-latest, windows-latest,macos-latest]
       fail-fast: false
