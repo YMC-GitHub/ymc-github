@@ -40,9 +40,22 @@ jobs:
         with:
           version: 6.34.0
 
-      - name: set pnpm store directory
-        run: pnpm config set store-dir ~/.pnpm-store
+    #   - name: set pnpm store directory
+    #     run: pnpm config set store-dir ~/.pnpm-store
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+
+      - name: get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: set pnpm cache directory
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
 
       - name: set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v3
