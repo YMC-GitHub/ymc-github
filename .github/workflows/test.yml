@@ -1,22 +1,42 @@
-name: update readme
+name: test
 
 on:
-  schedule:
-    - cron: '20 * * * *' #test per 20 min
+# fired on branch main push
+  push:
+    branches:
+      - main
+# fired on branch main pull_request
+  pull_request:
+    branches:
+      - main
+# fired on schedule per 20 min
+#   schedule:
+#     - cron: '20 * * * *' #test per 20 min
   workflow_dispatch:
-jobs:
-  update-readme:
-    name: update github profile reamdme 
-    runs-on: ubuntu-latest
+jobs: 
+  # build job
+  build:
+    runs-on: ${{ matrix.os }} # run on spec os
+    timeout-minutes: 10
+
+    strategy:
+      matrix:
+        # set nodejs matrix
+        node_version: [14.x, 16.x]
+        # set os matrix
+        os: [ubuntu-latest, windows-latest]
+      fail-fast: false
+
     steps:
-      - uses: actions/checkout@v3
-      
+      - name: sync git repo
+        uses: actions/checkout@v3
+
       - name: install pnpm
         uses: pnpm/action-setup@v2 #https://github.com/pnpm/action-setup
         with:
           version: 6.34.0
 
-      - name: Set node version to ${{ matrix.node_version }}
+      - name: set node version to ${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
