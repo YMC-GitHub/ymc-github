@@ -41,8 +41,9 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
-      - name: set up base env
-        run: echo "ok"
+        run: pnpm install --frozen-lockfile
+      - name: run test
+        run: pnpm test
     #   - uses: ymc-gitub/ymc-gitub@master
     #     with:
     #       WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
