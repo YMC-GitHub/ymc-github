@@ -1,0 +1,1 @@
+I'm a fullstack developer, I've been coding since I was 18 years old. In 2012 I entered the Nanjing Agricultural University where I started studying Nature Science and Computer Science, where I met incredible people. I am currently working on FlowerTear, a software factory where I work mainly with React, Vuejs and NodeJS.
