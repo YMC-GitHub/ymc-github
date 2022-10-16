@@ -67,10 +67,35 @@ jobs:
 
       - name: install dependencies
         run: pnpm i
+
+    #   - name: build
+    #     run: pnpm run build
+
+    #   - name: lint
+    #     run: pnpm run lint
+
     #   - name: run ci
     #     run: pnpm ci
       - name: run test
-        run: pnpm test
+        run: pnpm run test
+
+    #   - uses: actions/setup-node@v3
+    #     with:
+    #       node-version: '14.x'
+    #       registry-url: 'https://registry.npmjs.org'
+    #   - run: npm publish
+    #     name: push to npmjs with npm
+    #     env:
+    #       NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    #   - uses: actions/setup-node@v3
+    #     with:
+    #       registry-url: 'https://npm.pkg.github.com'
+    #   - run: npm publish
+    #     name: push to grp with npm
+    #     env:
+    #       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     #   - uses: ymc-gitub/ymc-gitub@master
     #     with:
     #       WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
