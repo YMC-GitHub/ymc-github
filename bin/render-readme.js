@@ -101,6 +101,7 @@ function writeTpl(tpl, data) {
 }
 
 main();
+
 // node bin/render-readme.js
 // when add '#!/usr/bin/env node' to file head
 // bin/render-readme.js
