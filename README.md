@@ -8,8 +8,8 @@
 <!-- github stat and most used language:e -->
 
 <!-- week stat:s -->
-<a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="98%" src="https://github-readme-stats.vercel.app/api/wakatime?username=ymc-github&theme=radical&custom_title=YeMiancheng's Week Stats" 
-alt="YeMiancheng's Week Stats"/></a>
+<!-- <a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="98%" src="https://github-readme-stats.vercel.app/api/wakatime?username=ymc-github&theme=radical&custom_title=YeMiancheng's Week Stats" 
+alt="YeMiancheng's Week Stats"/></a> -->
 <!-- week stat:e -->
 
 <!-- GitHub Activity Graph:s -->
