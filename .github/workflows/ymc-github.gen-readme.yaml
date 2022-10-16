@@ -1,9 +1,9 @@
 # task: update readme with push
 # desc: 
 # - [x] fired on branch master,main push
-# - [x] run on os ubuntu,windows,macos
+# - [x] run on os ubuntu
 # - [x] run with os architecture x64
-# - [x] require node.js 12.x, 14.x, 16.x
+# - [x] require node.js 12.x
 # - [x] require github action actions/checkout@v3
 # - [x] install pnpm @6.34.0 with github action actions/checkout@v3
 # - [x] install each node.js in per os wiith caching pnpm
@@ -26,9 +26,9 @@ jobs:
     strategy:
       matrix:
         # set nodejs matrix
-        node_version: [12.x, 14.x, 16.x]
+        node_version: [12.x]
         # set os matrix
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
         # architecture: [x86, x64]
         architecture: 
          - x64
