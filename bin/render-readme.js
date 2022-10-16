@@ -51,8 +51,12 @@ async function main() {
 
     //feat: record updated time in file
     let now = new Date();
-    now = formtDate("yyyy-MM-dd HH:mm:ss",now);
-    log(`[info] now:${now}`)
+    // now = formtDate("yyyy-MM-dd HH:mm:ss",now);
+    now = formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(now,"Asia/Shanghai"))
+    log(`[info] now: ${now}`)
+    // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"Asia/Shanghai"))} Asia/Shanghai `)
+    // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"Europe/Berlin"))} Europe/Berlin `)
+    // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"America/New_York"))} America/New_York `)
     file.data = now;
     file.name = `updated-time.md`;
     log(`[info] out: ${file.name}`);
@@ -189,6 +193,22 @@ function formtDate(fmt,ctx) {
 Date.prototype.Format = function(fmt){
     return formtDate(fmt,this)
 }
+
+function changeTimeZone(date, timeZone) {
+    if (typeof date === 'string') {
+      return new Date(
+        new Date(date).toLocaleString('en-US', {
+          timeZone,
+        }),
+      );
+    }
+  
+    return new Date(
+      date.toLocaleString('en-US', {
+        timeZone,
+      }),
+    );
+  }
 main();
 
 // node bin/render-readme.js
