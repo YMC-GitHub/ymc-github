@@ -1,17 +1,19 @@
 name: test
 
 on:
-# fired on branch main push
-  push:
-    branches:
-      - main
-# fired on branch main pull_request
-  pull_request:
-    branches:
-      - main
+# # fired on branch main push
+#   push:
+#     branches:
+#       - main
+# # fired on branch main pull_request
+#   pull_request:
+#     branches:
+#       - main
 # fired on schedule per 20 min
-#   schedule:
-#     - cron: '20 * * * *' #test per 20 min
+  schedule:
+    # run at 12:00 (beijing) on working days
+    # note: in github beijing time +8 h
+    - cron: 0 20 * * 0-5
   workflow_dispatch:
 jobs: 
   # build job
