@@ -56,21 +56,23 @@ jobs:
     #       key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
     #       restore-keys: |
     #         ${{ runner.os }}-pnpm-store-
-      - uses: szenius/set-timezone@v1.0
-        name: set timezone
-        with: 
-            timezoneLinux: "Asia/Shanghai"
-            timezoneMacos: "Asia/Shanghai"
-            timezoneWindows: "Shanghai Standard Time"
+    #   - uses: szenius/set-timezone@v1.0
+    #     name: set timezone
+    #     with: 
+    #         timezoneLinux: "Asia/Shanghai"
+    #         timezoneMacos: "Asia/Shanghai"
+    #         timezoneWindows: "Shanghai Standard Time"
       # https://github.com/marketplace/actions/set-timezone
       - name: install dependencies
         run: pnpm i
       - name: gen readme with repo bins
         run: ./bin/render-readme.js
       - name: commit files
+      # git commit -m "chore(core): update readme in github action" --date "$(date "+%Y-%m-%d %H:%M:%S" -d "+8 hour") +0800"
         run:  |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md updated-time.md
-          git commit -m "chore(core): update readme in github action"
+          git commit -m "chore(core): update readme in github action" --date "$(date "+%Y-%m-%d %H:%M:%S" -d "+8 hour") +0800"
           git log --pretty=format:"%ai" -n 3
+
