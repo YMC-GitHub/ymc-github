@@ -67,4 +67,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add README.md updated-time.md
           git commit -m "chore(core): update readme in github action"
-          git log --oneline -n -1
+          git log --pretty=format:"%ai" -n 1
