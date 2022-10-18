@@ -57,9 +57,13 @@ async function main() {
         changeTimeZone(now, "Asia/Shanghai")
     );
     log(`[info] now: ${now}`);
-    // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"Asia/Shanghai"))} Asia/Shanghai `)
-    // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"Europe/Berlin"))} Europe/Berlin `)
-    // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"America/New_York"))} America/New_York `)
+    let areas = 'Asia/Shanghai,Europe/Berlin,America/New_York'
+    areas= areas.split(",").map(area=>{
+        let t = formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),area))
+        return `${area}:${t}`
+    })
+    log(`[info] now: ${areas.join(" ")}`)
+
     file.data = now;
     file.name = `updated-time.md`;
     log(`[info] out: ${file.name}`);
