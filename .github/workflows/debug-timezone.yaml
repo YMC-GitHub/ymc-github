@@ -56,7 +56,13 @@ jobs:
     #       key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
     #       restore-keys: |
     #         ${{ runner.os }}-pnpm-store-
-
+      - uses: szenius/set-timezone@v1.0
+        name: set timezone
+        with: 
+            timezoneLinux: "Asia/Shanghai"
+            timezoneMacos: "Asia/Shanghai"
+            timezoneWindows: "Shanghai Standard Time"
+      # https://github.com/marketplace/actions/set-timezone
       - name: install dependencies
         run: pnpm i
       - name: gen readme with repo bins
