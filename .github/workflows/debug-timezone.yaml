@@ -1,0 +1,70 @@
+name: debug time zone
+on:
+  push:
+    branches: [debug-timezone]
+#   schedule:
+#     # m h d M w y
+#     - cron: 15 * * * * # run per 30 min
+  workflow_dispatch:
+jobs: 
+  # build job
+  build:
+    runs-on: ${{ matrix.os }} # run on spec os
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        # set nodejs matrix
+        node_version: [12.x]
+        # set os matrix
+        os: [ubuntu-latest]
+        # architecture: [x86, x64]
+        architecture: 
+         - x64
+      fail-fast: false
+
+    name: Node ${{ matrix.node_version }} - ${{ matrix.architecture }} on ${{ matrix.os }}
+    steps:
+      - name: sync git repo
+        uses: actions/checkout@v3
+
+      - name: install pnpm
+        uses: pnpm/action-setup@v2 #https://github.com/pnpm/action-setup
+        with:
+          version: 6.34.0
+
+      - name: set node version to ${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+          architecture: ${{ matrix.architecture }}
+          cache: pnpm
+
+      - name: set pnpm store directory
+        # run: pnpm config set store-dir ~/.pnpm-store
+        run: pnpm config set store-dir .pnpm-store
+      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
+
+    #   - name: get pnpm store directory
+    #     id: pnpm-cache
+    #     run: |
+    #       echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+    #   - uses: actions/cache@v3
+    #     name: set pnpm cache directory
+    #     with:
+    #       path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+    #       key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+    #       restore-keys: |
+    #         ${{ runner.os }}-pnpm-store-
+
+      - name: install dependencies
+        run: pnpm i
+      - name: gen readme with repo bins
+        run: ./bin/render-readme.js
+      - name: commit files
+        run:  |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md updated-time.md
+          git commit -m "chore(core): update readme in github action"
+          git log --oneline -n -1
