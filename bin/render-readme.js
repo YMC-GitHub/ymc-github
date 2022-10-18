@@ -52,8 +52,11 @@ async function main() {
     //feat: record updated time in file
     let now = new Date();
     // now = formtDate("yyyy-MM-dd HH:mm:ss",now);
-    now = formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(now,"Asia/Shanghai"))
-    log(`[info] now: ${now}`)
+    now = formtDate(
+        "yyyy-MM-dd HH:mm:ss",
+        changeTimeZone(now, "Asia/Shanghai")
+    );
+    log(`[info] now: ${now}`);
     // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"Asia/Shanghai"))} Asia/Shanghai `)
     // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"Europe/Berlin"))} Europe/Berlin `)
     // log(`[info] now:${formtDate("yyyy-MM-dd HH:mm:ss",changeTimeZone(new Date(),"America/New_York"))} America/New_York `)
@@ -131,7 +134,7 @@ function writeTpl(tpl, data) {
  * M+
  * ```
  */
-function formtDate(fmt,ctx) {
+function formtDate(fmt, ctx) {
     // let ctx = this;
     const o = {
         "M+": ctx.getMonth() + 1,
@@ -173,7 +176,7 @@ function formtDate(fmt,ctx) {
     }
     return fmt;
 }
-// extend date 
+// extend date
 // formtDate
 
 /**
@@ -190,25 +193,27 @@ function formtDate(fmt,ctx) {
  * M+
  * ```
  */
-Date.prototype.Format = function(fmt){
-    return formtDate(fmt,this)
-}
+Date.prototype.Format = function (fmt) {
+    return formtDate(fmt, this);
+};
 
 function changeTimeZone(date, timeZone) {
-    if (typeof date === 'string') {
-      return new Date(
-        new Date(date).toLocaleString('en-US', {
-          timeZone,
-        }),
-      );
+    let lang = "chinese";
+    // lang = "en-US";
+    if (typeof date === "string") {
+        return new Date(
+            new Date(date).toLocaleString(lang, {
+                timeZone,
+            })
+        );
     }
-  
+
     return new Date(
-      date.toLocaleString('en-US', {
-        timeZone,
-      }),
+        date.toLocaleString(lang, {
+            timeZone,
+        })
     );
-  }
+}
 main();
 
 // node bin/render-readme.js
