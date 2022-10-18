@@ -22,7 +22,8 @@ on:
     # m h d M w y
     # - cron: 30 * * * * # run per 30 min
     # - cron: 0 8,12 * * * # run when 8:00 and 12:00 (utc)
-    - cron: 0 8 * * * # run when 0:00 (beijing)
+    - cron: 0 4 * * * # run when 12:00 (beijing)
+    # - cron: 0 8 * * * # run when 0:00 (beijing)
     # - cron: 0 0,4 * * * # run when 8:00 and 12:00 (beijing)
     # - cron: 0 0,12 * * * # run when 8:00 and 20:00 (beijing)
     # - cron: 0 0,4,12 * * * # run when 8:00,12:00,20:00 (beijing)
