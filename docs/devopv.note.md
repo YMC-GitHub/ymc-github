@@ -22,6 +22,8 @@ git log --oneline
 
 # multi-opv-loc: pull then push to remote
 git pull origin main --rebase;git push origin main
+
+# git restore docs/devopv.note.md
 ```
 
 ### draft history
@@ -66,6 +68,8 @@ git add .github/workflows/test.yml ; git commit --file .git/COMMIT_EDITMSG ;git 
 git add .github/workflows/test.yml ; git commit -m "chore(core): comment job"; git log --oneline -n 1
 git add .github/workflows/test.yml ; git commit -m "chore(core): run on beijing time 12:00 per day"; git log --oneline -n 1
 git add docs ; git commit -m "docs(core): add note"; git log --oneline -n 1
+git add data ; git commit -m "chore(core): add repo status tpl"; git log --oneline -n 1
+
 
 git add .gitignore ; git commit -m "chore(core): ignore node modules "; git log --oneline -n 1
 
