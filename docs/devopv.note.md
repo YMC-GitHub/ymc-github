@@ -67,6 +67,8 @@ git add .github/workflows/test.yml ; git commit --file .git/COMMIT_EDITMSG ;git 
 
 git add .github/workflows/test.yml ; git commit -m "chore(core): comment job"; git log --oneline -n 1
 git add .github/workflows/test.yml ; git commit -m "chore(core): run on beijing time 12:00 per day"; git log --oneline -n 1
+git add .github/workflows/ymc-github.gen-readme.yaml ; git commit -m "chore(core): diable on schedule"; git log --oneline -n 1
+git add .github/workflows/ymc-github.gen-readme.yaml ; git commit -m "chore(core): enabale on schedule"; git log --oneline -n 1
 git add docs ; git commit -m "docs(core): add note"; git log --oneline -n 1
 git add data ; git commit -m "chore(core): add repo status tpl"; git log --oneline -n 1
 
@@ -141,7 +143,10 @@ git add bin/render-readme.js ; git commit -m "chore(core): record updated time i
 git add bin/render-readme.js ; git commit -m "chore(core): use timezone shanghai"; git log --oneline -n 1
 git add updated-time.md ; git commit -m "chore(core): record updated time in file"; git log --oneline -n 1
 git add .github/workflows/ymc-github.gen-readme.yaml ;git commit -m "chore(core): record updated time in file"; git log --oneline -n 1
+git mv .github/workflows/ymc-github.gen-readme.yaml .github/workflows/auto-update.yaml ;git commit -m "chore(core): rename to auto-update"; git log --oneline -n 1
+git add .github/workflows/auto-update.yaml ; git commit -m "chore(core): update workflow name"; git log --oneline -n 1
 
+git add docs/devopv* ; git commit -m "chore(core): update devopv note"; git log --oneline -n 1
 git pull origin main --rebase;git push origin main
 
 chmod +x bin/render-readme.js
