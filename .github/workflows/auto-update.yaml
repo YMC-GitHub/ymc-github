@@ -13,7 +13,7 @@
 # - [x] update readme with node script in repo
 # - [x] commit files
 # - [x] push to github
-name: ymc-github-gen-readme
+name: auto update
 on:
   push:
     branches: [master, main]
