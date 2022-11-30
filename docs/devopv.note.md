@@ -118,6 +118,9 @@ git add .github/workflows/debug-timezone.yaml ;git commit -m "chore(core): use g
 git add .github/workflows/debug-timezone.yaml ;git commit -m "chore(core): set commit date with date in bash";  git log --oneline -n 1
 git add .github/workflows/ymc-github.gen-readme.yaml ; git commit -m "chore(core): set commit date with date in bash"; git log --oneline -n 1
 
+git add .github/workflows/check-action-health.yaml ;git commit -m "chore(core): check github action health";  git log --oneline -n 1
+
+
 git push origin debug-timezone
 
 git checkout -b dev --track main ; git rebase dev debug-timezone
