@@ -20,15 +20,43 @@ git branch 2021-06-13 053455c
 # del-branch: 
 git branch -D 2021-06-13
 
+
+# lst-branch: 
+git branch 
+
+git branch -D ls
+
+
 # multi-opv-loc: pull then push to remote
-git pull origin main --rebase;git push origin main
+git pull origin main --rebase;git push origin main;
 
 # git restore docs/devopv.note.md
 
 # bak-data:
 
-# bash-shell get today
-# today=`date "+%Y-%m-%d"`;echo $today
+# zero:task:s:branch design
+# use branch main as main branch .
+# use branch dev as develop branch .
+# use branch feat-xx as devloping some feat xx branch .
+# use branch date-xx as some archived branch .
+# zero:task:e:branch design
+
+git push origin main
+git push origin 2021-06-13
+git push origin master
+
+
+# zero:task:s:update remote branch to latest
+# del branch master and make new branch master with branch main .
+# del remote branch master and push new branch master .
+git checkout -b master --track main;git push origin :master;git push origin master;
+# zero:task:e:update remote branch to latest
+
+# zero:task:s:del branch main and make new branch main with branch master
+git branch -D main;git checkout -b main --track master;
+# zero:task:e:del branch main and make new branch main with branch master
+
+
 ```
 
 ### draft history
@@ -46,20 +74,11 @@ git mv .github/workflows/ymc-readme.yml .github/workflows/update-readme.yml ; gi
 
 
 git add README.md ; git commit -m "feat(core): delete week stats"; git log --oneline -n 1
-git push origin main
-git push origin 2021-06-13
-git push origin master
 
-# zero:task:s:update remote branch to latest
-git checkout -b master --track main
-git push origin :master
-git push origin master
-# zero:task:e:update remote branch to latest
+f=package.json;
+git add $f ; git commit -m "chore(core): ini package json"; git log --oneline -n 1
+git add $f ; git commit -m "chore(core): ini test script"; git log --oneline -n 1
 
-git add package.json ; git commit -m "chore(core): ini package json"; git log --oneline -n 1
-
-git branch -D main
-git checkout -b main --track master
 
 
 # zero:task:s:debug github workflow test.yaml
@@ -76,15 +95,9 @@ git add $f ; git commit -m "chore(core): rename file suffix";  git log --oneline
 git mv .github/workflows/test.yml .github/workflows/test.yaml 
 # zero:task:e:debug github workflow test.yaml
 
-
-
 git add docs ; git commit -m "docs(core): add note"; git log --oneline -n 1
 git add data ; git commit -m "chore(core): add repo status tpl"; git log --oneline -n 1
-
-
 git add .gitignore ; git commit -m "chore(core): ignore node modules "; git log --oneline -n 1
-
-git add package.json ; git commit -m "chore(core): ini test script"; git log --oneline -n 1
 
 # zero:task:s:opv readme.md
 f=README.md;
@@ -206,9 +219,6 @@ git log --pretty=format:"%h %as"
 git log --pretty=format:"%as" 053455c
 
 "053455c 2021-06-13"
-
-
-# graph was stopped working
 ```
 
 <!-- github cron intro https://blog.csdn.net/Ximerr/article/details/123501772 -->
