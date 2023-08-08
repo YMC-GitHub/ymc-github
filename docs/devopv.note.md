@@ -66,6 +66,28 @@ git checkout -b  main > /dev/null >2&1;git branch $today;git push origin $today
 # if you have many opv-ers for thes repos, continue reading.
 git pull origin main --rebase;git push origin main;
 # zero:task:s:remmber pull brefore pushing
+
+# zero:task:s:rebase branch debug-timezone  to  branch dev
+BRANCH_DEV=debug-timezone;BRANCH_MAIN=dev;
+# BRANCH_DEV=dev;BRANCH_MAIN=main;
+
+# zero:task:s:all commit to one (only the last commit result)
+git checkout -b $BRANCH_DEV; git rebase $BRANCH_MAIN ; git checkout $BRANCH_MAIN ; git merge $BRANCH_DEV;
+# zero:task:e:all commit to one (only the last commit result)
+
+
+# zero:task:s:keep all commit to each (keep commit history)
+git rebase $BRANCH_MAIN $BRANCH_DEV;
+# # if rebase ok ,then:
+git branch -D $BRANCH_MAIN; git checkout -b $BRANCH_MAIN --track $BRANCH_DEV; git branch -D $BRANCH_DEV; git push origin :$BRANCH_MAIN
+# zero:task:e:keep all commit to each (keep commit history)
+# zero:task:e:rebase branch debug-timezone  to  branch dev
+
+# zero:task:s:make a new branch main with branch dev
+git branch -D main; git checkout -b main --track dev;
+# zero:task:e:make a new branch main with branch dev
+
+
 ```
 
 ### draft history
@@ -161,15 +183,30 @@ git add $f ;git commit -m "chore(core): set commit date with date in bash";  git
 git push origin debug-timezone
 git checkout -b dev --track main ; git rebase dev debug-timezone
 
-# rebase branch debug-timezone  to  branch dev
-# rebase:1:all commit to one (only the last commit result)
-# git checkout -b debug-timezone ; git rebase dev ; git checkout dev ; git merge debug-timezone
 
-# rebase:2:keep all commit to each (keep commit hsitory)
+# zero:task:s:rebase branch debug-timezone  to  branch dev
+# zero:task:s:all commit to one (only the last commit result)
+# git checkout -b debug-timezone ; git rebase dev ; git checkout dev ; git merge debug-timezone;
+BRANCH_DEV=debug-timezone;BRANCH_MAIN=dev;
+git checkout -b $BRANCH_DEV; git rebase $BRANCH_MAIN ; git checkout $BRANCH_MAIN ; git merge $BRANCH_DEV;
+# zero:task:e:all commit to one (only the last commit result)
+
+
+# zero:task:s:keep all commit to each (keep commit history)
 # git rebase dev debug-timezone
-# test ok ,then:
+# # if rebase ok ,then:
 # git branch -D dev; git checkout -b dev --track debug-timezone; git branch -D debug-timezone; git push origin :debug-timezone
+
+BRANCH_DEV=debug-timezone;BRANCH_MAIN=dev;
+git rebase $BRANCH_MAIN $BRANCH_DEV;
+# # if rebase ok ,then:
+git branch -D $BRANCH_MAIN; git checkout -b $BRANCH_MAIN --track $BRANCH_DEV; git branch -D $BRANCH_DEV; git push origin :$BRANCH_MAIN
+# zero:task:e:keep all commit to each (keep commit history)
+
 # git branch -D main; git checkout -b main --track dev;
+# zero:task:e:rebase branch debug-timezone  to  branch dev
+
+
 # zero:task:e:debug branch debug-timezone
 
 
