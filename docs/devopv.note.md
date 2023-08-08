@@ -65,6 +65,7 @@ git checkout -b  main > /dev/null >2&1;git branch $today;git push origin $today
 # zero:task:s:remmber pull brefore pushing
 # if you have many opv-ers for thes repos, continue reading.
 git pull origin main --rebase;git push origin main;
+git pull origin dev --rebase;git push origin dev;
 # zero:task:s:remmber pull brefore pushing
 
 # zero:task:s:rebase branch debug-timezone  to  branch dev
@@ -87,6 +88,9 @@ git branch -D $BRANCH_MAIN; git checkout -b $BRANCH_MAIN --track $BRANCH_DEV; gi
 git branch -D main; git checkout -b main --track dev;
 # zero:task:e:make a new branch main with branch dev
 
+# zero:task:s:del local branch master and remote branch master
+git branch -D master;git pull origin :master;
+# zero:task:e:del local branch master and remote branch master
 
 ```
 
