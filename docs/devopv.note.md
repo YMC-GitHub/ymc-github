@@ -29,15 +29,17 @@ git branch -D 2021-06-13
 # lst-branch: 
 git branch 
 
-git branch -D ls
+# restore file:
+git restore docs/devopv.note.md
 
+# get current branch
+branchnow=`git branch | grep "*" | cut -d " " -f2`;echo $branchnow;
 
-# multi-opv-loc: pull then push to remote
-git pull origin main --rebase;git push origin main;
-
-# git restore docs/devopv.note.md
-
-# bak-data:
+# zero:task:s:del branch main and make new branch main with branch master
+# if you do not like using branch main as master branch, skip.
+# if you have used it as master branch, skip.
+git branch -D main;git checkout -b main --track master;
+# zero:task:e:del branch main and make new branch main with branch master
 
 # zero:task:s:branch design
 # use branch main as main branch .
@@ -46,31 +48,24 @@ git pull origin main --rebase;git push origin main;
 # use branch date-xx as some archived branch .
 # zero:task:e:branch design
 
-git push origin main
-git push origin 2021-06-13
-git push origin master
-
-# get current branch
-branchnow=`git branch | grep "*" | cut -d " " -f2`;echo $branchnow;
-
-# zero:s:task:add an archive branch with date today
-today=$(date "+%Y-%m-%d");echo "$today";
-git checkout -b  main > /dev/null >2&1;git branch $today;git branch;git push origin $today
-
-# zero:e:task:add an archive branch with date today
-
 # zero:task:s:update remote branch to latest
+# if you have some dirty branchs and want to make them clear from zero, continue reading.
 # del branch master and make new branch master with branch main .
 # del remote branch master and push new branch master .
 git branch -D master;git checkout -b master --track main;git push origin :master;git push origin master;
 git branch -D dev;git checkout -b dev --track main;git push origin :dev;git push origin dev;
 # zero:task:e:update remote branch to latest
 
-# zero:task:s:del branch main and make new branch main with branch master
-git branch -D main;git checkout -b main --track master;
-# zero:task:e:del branch main and make new branch main with branch master
+# zero:s:task:add an archive branch with date today
+# if you like archiving branch main with date today, continue reading.
+today=$(date "+%Y-%m-%d");echo "$today";
+git checkout -b  main > /dev/null >2&1;git branch $today;git push origin $today
+# zero:e:task:add an archive branch with date today
 
-
+# zero:task:s:remmber pull brefore pushing
+# if you have many opv-ers for thes repos, continue reading.
+git pull origin main --rebase;git push origin main;
+# zero:task:s:remmber pull brefore pushing
 ```
 
 ### draft history
@@ -212,9 +207,6 @@ git commit -m "" --date "$(date "+%Y-%m-%d %H:%M:%S" -d "+8 hour") +0800"
 git add updated-time.md ; git commit -m "chore(core): record updated time in file"; git log --oneline -n 1;
 git add docs/devopv* ; git commit -m "chore(core): update devopv note"; git log --oneline -n 1
 git add docs/devopv* ; git commit -m "docs(core): let note easy to read"; git log --oneline -n 1
-
-
-git pull origin main --rebase;git push origin main
 
 # zero:task:s:add x right to file
 f=bin/render-readme.js;chmod +x $f;git update-index --chmod=+x $f;
