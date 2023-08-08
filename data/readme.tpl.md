@@ -13,6 +13,6 @@ alt="{authorName}'s Week Stats"/></a> -->
 <!-- week stat:e -->
 
 <!-- GitHub Activity Graph:s -->
-<a href="https://github.com/{owner}?tab=repositories"><img align="center" width="98%" src="https://activity-graph.herokuapp.com/graph?username={owner}&theme=redical" 
+<a href="https://github.com/{owner}?tab=repositories"><img align="center" width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username={owner}&theme=redical" 
 alt="{owner}'s GitHub Activity Graph"/></a>
 <!-- GitHub Activity Graph:e -->
