@@ -5,6 +5,11 @@
 
 ```bash
 
+GH_USER=ymc-github;
+GH_REPO=ymc-github;
+echo "https://github.com/${GH_USER}/${GH_REPO}";
+echo "https://github.com/${GH_USER}";
+
 # add-tag: tag commit with author date
 git tag v2021-06-13 053455c
 
