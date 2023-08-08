@@ -13,6 +13,6 @@ alt="YeMiancheng's Week Stats"/></a> -->
 <!-- week stat:e -->
 
 <!-- GitHub Activity Graph:s -->
-<a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="98%" src="https://activity-graph.herokuapp.com/graph?username=ymc-github&theme=redical" 
+<a href="https://github.com/ymc-github?tab=repositories"><img align="center" width="98%" src="https://github-readme-activity-graph.vercel.app/graph?username=ymc-github&theme=redical" 
 alt="ymc-github's GitHub Activity Graph"/></a>
 <!-- GitHub Activity Graph:e -->
