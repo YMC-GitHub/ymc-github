@@ -62,8 +62,8 @@ git checkout -b  main > /dev/null >2&1;git branch $today;git branch;git push ori
 # zero:task:s:update remote branch to latest
 # del branch master and make new branch master with branch main .
 # del remote branch master and push new branch master .
-git checkout -b master --track main;git push origin :master;git push origin master;
-git checkout -b dev --track main;git push origin :dev;git push origin dev;
+git branch -D master;git checkout -b master --track main;git push origin :master;git push origin master;
+git branch -D dev;git checkout -b dev --track main;git push origin :dev;git push origin dev;
 # zero:task:e:update remote branch to latest
 
 # zero:task:s:del branch main and make new branch main with branch master
