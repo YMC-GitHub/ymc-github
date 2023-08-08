@@ -45,11 +45,20 @@ git push origin main
 git push origin 2021-06-13
 git push origin master
 
+# get current branch
+branchnow=`git branch | grep "*" | cut -d " " -f2`;echo $branchnow;
+
+# zero:s:task:add an archive branch with date today
+today=$(date "+%Y-%m-%d");echo "$today";
+git checkout -b  main > /dev/null >2&1;git branch $today;git branch;git push origin $today
+
+# zero:e:task:add an archive branch with date today
 
 # zero:task:s:update remote branch to latest
 # del branch master and make new branch master with branch main .
 # del remote branch master and push new branch master .
 git checkout -b master --track main;git push origin :master;git push origin master;
+git checkout -b dev --track main;git push origin :dev;git push origin dev;
 # zero:task:e:update remote branch to latest
 
 # zero:task:s:del branch main and make new branch main with branch master
