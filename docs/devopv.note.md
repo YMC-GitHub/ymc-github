@@ -92,6 +92,9 @@ git branch -D main; git checkout -b main --track dev;
 git branch -D master;git pull origin :master;
 # zero:task:e:del local branch master and remote branch master
 
+# zero:task:s:del local branch dev and remote branch dev
+git branch -D dev;git pull origin :dev;
+# zero:task:e:del local branch dev and remote branch dev
 ```
 
 ### draft history
