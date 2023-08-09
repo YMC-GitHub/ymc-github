@@ -110,11 +110,11 @@ git branch -D main; git checkout -b main --track dev;
 # zero:task:e:make a new branch main with branch dev
 
 # zero:task:s:del local branch master and remote branch master
-git branch -D master;git pull origin :master;
+git branch -D master;git push origin :master;
 # zero:task:e:del local branch master and remote branch master
 
 # zero:task:s:del local branch dev and remote branch dev
-git branch -D dev;git pull origin :dev;
+git branch -D dev;git push origin :dev;
 # zero:task:e:del local branch dev and remote branch dev
 
 # lst changes files in git
@@ -184,6 +184,11 @@ git branch -D $BRANCH_MAIN; git checkout -b $BRANCH_MAIN --track $BRANCH_DEV; gi
 # zero:task:e:keep all commit to each (keep commit history)
 
 # zero:task:e:rebase branch BRANCH_DEV to branch BRANCH_MAIN
+
+# zero:task:s:remmber pull brefore pushing
+# if you have many opv-ers for thes repos, continue reading.
+git pull origin dev --rebase;git push origin dev;
+# zero:task:s:remmber pull brefore pushing
 ```
 
 ### use branch feat-xx as featue developing  branch
