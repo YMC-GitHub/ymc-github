@@ -74,7 +74,7 @@ git branch -D main;git checkout -b main --track master;
 # del remote branch master and push new branch master .
 # git branch -D master;git checkout -b master --track main;git push origin :master;git push origin master;
 # git branch -D dev;git checkout -b dev --track main;git push origin :dev;git push origin dev;
-BRANCH_BASE=main;BRANCH_TO=dev;REMOTE_NAME=origin;git branch -D $BRANCH_TO;git checkout -b $BRANCH_TO --track $BRANCH_BASE;git push $REMOTE_NAME :$BRANCH_TO;git push $REMOTE_NAME $BRANCH_TO;
+BRANCH_MAIN=main;BRANCH_DEV=dev;REMOTE_NAME=origin;git branch -D $BRANCH_DEV;git checkout -b $BRANCH_DEV --track $BRANCH_MAIN;git push $REMOTE_NAME :$BRANCH_DEV;git push $REMOTE_NAME $BRANCH_DEV;
 # zero:task:e:update remote branch to latest
 
 # zero:s:task:add an archive branch with date today
@@ -165,12 +165,26 @@ git ls-files -k
 
 ### use branch dev as developing branch
 ```bash
-# zero:task:s:keep branch dev to lastest
+# zero:task:s:keep branch BRANCH_DEV to lastest
 # if your branch dev is old than branch main, continue reading.
-BRANCH_BASE=main;BRANCH_TO=dev;REMOTE_NAME=origin;git branch -D $BRANCH_TO;git checkout -b $BRANCH_TO --track $BRANCH_BASE;git push $REMOTE_NAME :$BRANCH_TO;git push $REMOTE_NAME $BRANCH_TO;
-# zero:task:e:keep branch dev to lastest
+BRANCH_MAIN=main;BRANCH_DEV=dev;REMOTE_NAME=origin;git branch -D $BRANCH_DEV;git checkout -b $BRANCH_DEV --track $BRANCH_MAIN;git push $REMOTE_NAME :$BRANCH_DEV;git push $REMOTE_NAME $BRANCH_DEV;
+# zero:task:e:keep branch BRANCH_DEV to lastest
+
+# zero:task:s:rebase branch BRANCH_DEV to branch BRANCH_MAIN
+BRANCH_DEV=dev;BRANCH_MAIN=main;
+
+# zero:task:s:all commit to one (only the last commit result)
+git checkout -b $BRANCH_DEV; git rebase $BRANCH_MAIN ; git checkout $BRANCH_MAIN ; git merge $BRANCH_DEV;
+# zero:task:e:all commit to one (only the last commit result)
 
 
+# zero:task:s:keep all commit to each (keep commit history)
+git rebase $BRANCH_MAIN $BRANCH_DEV;
+# # if rebase ok ,then:
+git branch -D $BRANCH_MAIN; git checkout -b $BRANCH_MAIN --track $BRANCH_DEV; git branch -D $BRANCH_DEV; git push origin :$BRANCH_MAIN
+# zero:task:e:keep all commit to each (keep commit history)
+
+# zero:task:e:rebase branch BRANCH_DEV to branch BRANCH_MAIN
 ```
 
 ### gen github workflow
