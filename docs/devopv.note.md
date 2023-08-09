@@ -174,7 +174,8 @@ BRANCH_MAIN=main;BRANCH_DEV=dev;REMOTE_NAME=origin;git branch -D $BRANCH_DEV;git
 BRANCH_DEV=dev;BRANCH_MAIN=main;
 
 # zero:task:s:all commit to one (only the last commit result)
-git checkout -b $BRANCH_DEV; git rebase $BRANCH_MAIN ; git checkout $BRANCH_MAIN ; git merge $BRANCH_DEV;
+git branch $BRANCH_DEV ;git switch $BRANCH_DEV;
+ git checkout -b $BRANCH_DEV; git rebase $BRANCH_MAIN ; git checkout $BRANCH_MAIN ; git merge $BRANCH_DEV;
 # zero:task:e:all commit to one (only the last commit result)
 
 
