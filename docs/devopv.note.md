@@ -25,6 +25,26 @@ git branch 2021-06-13 053455c
 # del-branch: 
 git branch -D 2021-06-13
 
+# zero:task:s:del local branch
+git branch -d feature/login
+# zero:task:e:del local branch
+
+
+# zero:task:s:lst remote branch
+git branch -r
+# zero:task:e:lst remote branch
+
+# zero:task:s:del remote branch (old)
+# git push origin :dev;
+# zero:task:s:del remote branch (old)
+
+# zero:task:s:del remote branch
+git push origin --delete feature/login
+# git push origin -d dev;
+# git push origin -d master;
+# or :
+# git push origin :dev;
+# zero:task:s:del remote branch
 
 # lst-branch: 
 git branch 
@@ -95,7 +115,79 @@ git branch -D master;git pull origin :master;
 # zero:task:s:del local branch dev and remote branch dev
 git branch -D dev;git pull origin :dev;
 # zero:task:e:del local branch dev and remote branch dev
+
+# lst changes files in git
+git diff-tree --no-commit-id --name-only -r $(git rev-parse --verify HEAD);
+# git diff-tree --no-commit-id --name-only -r ${{ github.sha }}
+# list changed files in a git commit](https://megamorf.gitlab.io/2021/03/19/list-changed-files-in-a-git-commit)
+
+# git ls-files --help
+# lst
+# git ls-files -o
+
+# zero:task:s:lst cached files in git
+# Show all files cached in Git’s index
+git ls-files -c
+# git ls-files -c -i xx
+# zero:task:e:lst cached files in git
+
+# zero:task:s:lst modified files in git
+git ls-files -m
+# zero:task:e:lst modified files in git
+
+# zero:task:s:lst deleted files in git
+# Show files with an unstaged deletion
+git ls-files -d
+# zero:task:e:lst deleted files in git
+
+# zero:task:s:lst other files in git
+# git ls-files -o
+# git ls-files -o -i xx
+# zero:task:e:lst other files in git
+
+# zero:task:s:lst untracked files in git
+git ls-files -o
+# zero:task:e:lst untracked files in git
+
+# zero:task:s:lst unmerged files in git
+git ls-files -u
+# zero:task:e:lst unmerged files in git
+
+# zero:task:s:lst killed files in git
+# Show untracked files on the filesystem that need to be removed due to file/directory conflicts for tracked files to be able to be written to the filesystem.
+git ls-files -k
+# zero:task:e:lst killed files in git
+
+# git checkout -- file
+# git reset HEAD file
 ```
+
+### gen github workflow
+```bash
+# add-sh:
+f=./bin/workflow.sh;touch "$f"; chmod +x "$f";
+
+# run-sh:
+./bin/workflow.sh
+
+```
+
+### use github-profile-3d-contrib
+```bash
+# zero:s:task:move all shell files in bin dirs to tmp dir to keep 100% js language.
+# tmp dir is a gitignore dir.
+mv bin/*.sh tmp/
+# zero:e:task:move all shell files in bin dirs to tmp dir to keep 100% js language.
+
+# zero:s:task:use shell files in tmp
+mv tmp/*.sh bin/
+# zero:e:task:use shell files in tmp
+
+./bin/github-profile-3d-contrib.sh
+```
+[use github-profile-3d-contrib](https://github.com/yoshi389111/github-profile-3d-contrib)
+
+
 
 ### draft history
 ```bash
@@ -274,6 +366,7 @@ git log --pretty=format:"%as" 053455c
 <!-- github cron intro https://blog.csdn.net/Ximerr/article/details/123501772 -->
 <!-- cron intro https://zhuanlan.zhihu.com/p/347129361 -->
 <!-- https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule -->
+
 ## faqs
 ```bash
 #Dependencies lock file is not found in D:\a\ymc-github\ymc-github. Supported file patterns: pnpm-lock.yaml
@@ -319,10 +412,12 @@ git log --pretty=format:"%as" 053455c
 ```
 
 ## todos
+
 - [ ] do some task in github action
 - [ ] push to github with github action
 - [x] run github action in docker
-```
+
+```bash
 # do some task in github action
 # clone -> commit -> push
 
