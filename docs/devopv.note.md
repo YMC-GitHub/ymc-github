@@ -72,8 +72,9 @@ git branch -D main;git checkout -b main --track master;
 # if you have some dirty branchs and want to make them clear from zero, continue reading.
 # del branch master and make new branch master with branch main .
 # del remote branch master and push new branch master .
-git branch -D master;git checkout -b master --track main;git push origin :master;git push origin master;
-git branch -D dev;git checkout -b dev --track main;git push origin :dev;git push origin dev;
+# git branch -D master;git checkout -b master --track main;git push origin :master;git push origin master;
+# git branch -D dev;git checkout -b dev --track main;git push origin :dev;git push origin dev;
+BRANCH_BASE=main;BRANCH_TO=dev;REMOTE_NAME=origin;git branch -D $BRANCH_TO;git checkout -b $BRANCH_TO --track $BRANCH_BASE;git push $REMOTE_NAME :$BRANCH_TO;git push $REMOTE_NAME $BRANCH_TO;
 # zero:task:e:update remote branch to latest
 
 # zero:s:task:add an archive branch with date today
