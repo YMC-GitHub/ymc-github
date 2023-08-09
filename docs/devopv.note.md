@@ -163,6 +163,16 @@ git ls-files -k
 # git reset HEAD file
 ```
 
+### use branch dev as developing branch
+```bash
+# zero:task:s:keep branch dev to lastest
+# if your branch dev is old than branch main, continue reading.
+BRANCH_BASE=main;BRANCH_TO=dev;REMOTE_NAME=origin;git branch -D $BRANCH_TO;git checkout -b $BRANCH_TO --track $BRANCH_BASE;git push $REMOTE_NAME :$BRANCH_TO;git push $REMOTE_NAME $BRANCH_TO;
+# zero:task:e:keep branch dev to lastest
+
+
+```
+
 ### gen github workflow
 ```bash
 # add-sh:
